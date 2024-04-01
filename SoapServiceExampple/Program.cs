@@ -1,5 +1,6 @@
 
 using SoapCore;
+using SoapCore.Extensibility;
 using SoapServiceExampple.Services;
 using System.ServiceModel;
 
@@ -18,6 +19,7 @@ namespace SoapServiceExampple
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSingleton<IFaultExceptionTransformer, DefaultFaultExceptionTransformer>();
             builder.Services.AddSingleton<StudentService>();
 
             var app = builder.Build();
